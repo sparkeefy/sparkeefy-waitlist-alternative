@@ -165,8 +165,16 @@
     @apply border-border outline-ring/50;
   }
 
+  html {
+    background-color: #010302;
+    overscroll-behavior: none;
+  }
+
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply text-foreground font-sans;
+    background-color: #010302;
+    min-height: 100%;
+    overscroll-behavior: none;
   }
 }
 
