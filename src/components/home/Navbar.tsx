@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   motion,
   useScroll,
@@ -24,7 +24,11 @@ const Navbar = () => {
   const y = useMotionValue(0);
   const smoothY = useSpring(y, { stiffness: 220, damping: 30 });
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
+
+  // Defer Sheet to client-only to avoid Radix UI ID mismatch between server and client (hydration error)
+  useEffect(() => setMounted(true), []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
@@ -172,109 +176,151 @@ const Navbar = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu */}
+          {/* Mobile Menu - Sheet only mounted on client to avoid Radix aria-controls hydration mismatch */}
           <div className="md:hidden text-white">
-            <Sheet>
-              <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon-lg"
-                  className="!text-white hover:bg-white/10 [&_svg]:!size-6"
-                >
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+            {mounted ? (
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon-lg"
+                    className="!text-white hover:bg-white/10 [&_svg]:!size-6"
                   >
-                    <rect
-                      x="3"
-                      y="6"
-                      width="18"
-                      height="2"
-                      rx="1"
-                      fill="currentColor"
-                    />
-                    <rect
-                      x="7"
-                      y="11"
-                      width="14"
-                      height="2"
-                      rx="1"
-                      fill="currentColor"
-                    />
-                    <rect
-                      x="11"
-                      y="16"
-                      width="10"
-                      height="2"
-                      rx="1"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </Button>
-              </SheetTrigger>
-              <SheetContent
-                side="top"
-                className="bg-black/40 border-b border-white/10 backdrop-blur-xl text-white rounded-b-[2rem]"
-              >
-                <SheetTitle className="hidden">Menu</SheetTitle>
-                <div className="flex flex-col items-center justify-center gap-5 mt-14 pb-6">
-                  {navLinks.map((link) => {
-                    const isActive = pathname === link.href;
-                    return (
-                      <Link
-                        key={link.name}
-                        href={link.href}
-                        className={`
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="3"
+                        y="6"
+                        width="18"
+                        height="2"
+                        rx="1"
+                        fill="currentColor"
+                      />
+                      <rect
+                        x="7"
+                        y="11"
+                        width="14"
+                        height="2"
+                        rx="1"
+                        fill="currentColor"
+                      />
+                      <rect
+                        x="11"
+                        y="16"
+                        width="10"
+                        height="2"
+                        rx="1"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent
+                  side="top"
+                  className="bg-black/40 border-b border-white/10 backdrop-blur-xl text-white rounded-b-[2rem]"
+                >
+                  <SheetTitle className="hidden">Menu</SheetTitle>
+                  <div className="flex flex-col items-center justify-center gap-5 mt-14 pb-6">
+                    {navLinks.map((link) => {
+                      const isActive = pathname === link.href;
+                      return (
+                        <Link
+                          key={link.name}
+                          href={link.href}
+                          className={`
                             relative text-xl font-medium transition-all duration-200
                             ${isActive ? "text-white" : "text-white/80 hover:text-white"}
                           `}
-                      >
-                        {isActive ? (
-                          <span className="block p-[1.5px] rounded-full bg-gradient-to-r from-[#FF0080] via-[#FF52A9] to-[#FF0080] bg-[length:200%_100%] animate-border-spin">
-                            <span className="block px-6 py-1 rounded-full bg-[#010302]">
-                              {link.name}
+                        >
+                          {isActive ? (
+                            <span className="block p-[1.5px] rounded-full bg-gradient-to-r from-[#FF0080] via-[#FF52A9] to-[#FF0080] bg-[length:200%_100%] animate-border-spin">
+                              <span className="block px-6 py-1 rounded-full bg-[#010302]">
+                                {link.name}
+                              </span>
                             </span>
-                          </span>
-                        ) : (
-                          <span className="block px-6 py-1">{link.name}</span>
-                        )}
-                      </Link>
-                    );
-                  })}
+                          ) : (
+                            <span className="block px-6 py-1">{link.name}</span>
+                          )}
+                        </Link>
+                      );
+                    })}
 
-                  {/* Animated Button */}
-                  <div className="relative w-full max-w-xs group mt-2">
-                    <div className="absolute inset-[-4px] bg-[#FF4AA5] rounded-full blur-[20px] opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
-                    <div className="relative rounded-full overflow-hidden p-[2px] group-hover:scale-105 transition-all duration-300">
-                      <motion.div
-                        className="absolute top-1/2 left-1/2 w-[500px] h-[500px]"
-                        style={{
-                          background:
-                            "conic-gradient(from 180deg at 50% 50%, #120020 0deg, #F9007D 53.3deg, #EE499C 90.5deg, #FFF 126.2deg, #120020 178.8deg, #120020 360deg)",
-                          x: "-50%",
-                          y: "-50%",
-                        }}
-                        animate={{ rotate: 360 }}
-                        transition={{
-                          duration: 4,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }}
-                      />
-                      <Button
-                        size="lg"
-                        className="relative w-full rounded-full bg-[linear-gradient(90deg,_rgba(60,_11,_36,_0.90)_0%,_rgba(0,_0,_0,_0.90)_100%)] backdrop-blur-lg text-base text-white font-medium"
-                      >
-                        Get Early Access
-                      </Button>
+                    {/* Animated Button */}
+                    <div className="relative w-full max-w-xs group mt-2">
+                      <div className="absolute inset-[-4px] bg-[#FF4AA5] rounded-full blur-[20px] opacity-0 group-hover:opacity-50 transition-opacity duration-300" />
+                      <div className="relative rounded-full overflow-hidden p-[2px] group-hover:scale-105 transition-all duration-300">
+                        <motion.div
+                          className="absolute top-1/2 left-1/2 w-[500px] h-[500px]"
+                          style={{
+                            background:
+                              "conic-gradient(from 180deg at 50% 50%, #120020 0deg, #F9007D 53.3deg, #EE499C 90.5deg, #FFF 126.2deg, #120020 178.8deg, #120020 360deg)",
+                            x: "-50%",
+                            y: "-50%",
+                          }}
+                          animate={{ rotate: 360 }}
+                          transition={{
+                            duration: 4,
+                            repeat: Infinity,
+                            ease: "linear",
+                          }}
+                        />
+                        <Button
+                          size="lg"
+                          className="relative w-full rounded-full bg-[linear-gradient(90deg,_rgba(60,_11,_36,_0.90)_0%,_rgba(0,_0,_0,_0.90)_100%)] backdrop-blur-lg text-base text-white font-medium"
+                        >
+                          Get Early Access
+                        </Button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </SheetContent>
-            </Sheet>
+                </SheetContent>
+              </Sheet>
+            ) : (
+              <Button
+                variant="ghost"
+                size="icon-lg"
+                className="!text-white hover:bg-white/10 [&_svg]:!size-6"
+                aria-label="Open menu"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="3"
+                    y="6"
+                    width="18"
+                    height="2"
+                    rx="1"
+                    fill="currentColor"
+                  />
+                  <rect
+                    x="7"
+                    y="11"
+                    width="14"
+                    height="2"
+                    rx="1"
+                    fill="currentColor"
+                  />
+                  <rect
+                    x="11"
+                    y="16"
+                    width="10"
+                    height="2"
+                    rx="1"
+                    fill="currentColor"
+                  />
+                </svg>
+              </Button>
+            )}
           </div>
         </div>
       </nav>
