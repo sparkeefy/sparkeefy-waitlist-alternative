@@ -84,7 +84,10 @@ const Footer = () => {
 
   // Robust Media Query via react-responsive (Handles scaling/zoom better)
   const [mounted, setMounted] = React.useState(false);
-  const isTallScreen = useMediaQuery({ minHeight: 800 });
+  const isTallScreenQuery = useMediaQuery({ minHeight: 800 });
+  
+  // Use default value on server, actual value after mount to prevent hydration mismatch
+  const isTallScreen = mounted ? isTallScreenQuery : false;
 
   React.useEffect(() => {
     setMounted(true);
@@ -313,20 +316,17 @@ const Footer = () => {
           <Image
             src="/img/footer-gradient-bg.png"
             alt="Gradient Background"
-            layout="fill"
-            objectFit="cover"
-            objectPosition={`${isTallScreen ? "top" : "bottom"}`}
+            fill
             priority
-            className="hidden md:block"
+            className="hidden md:block object-cover"
+            style={{ objectPosition: isTallScreen ? "top" : "bottom" }}
           />
           <Image
             src="/img/footer-gradient-bg-mobile.png"
             alt="Gradient Background"
-            layout="fill"
-            objectFit="cover"
-            objectPosition="top"
+            fill
             priority
-            className="md:hidden"
+            className="md:hidden object-cover object-top"
           />
         </div>
 
