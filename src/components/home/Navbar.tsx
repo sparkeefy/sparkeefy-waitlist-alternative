@@ -30,6 +30,13 @@ const Navbar = () => {
   // Defer Sheet to client-only to avoid Radix UI ID mismatch between server and client (hydration error)
   useEffect(() => setMounted(true), []);
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() ?? 0;
     const diff = latest - previous;
@@ -80,8 +87,8 @@ const Navbar = () => {
         className={`px-4 lg:px-8 transition-all duration-300 ${!isScrolled ? "pt-4 md:pt-[2.375rem] pb-4" : "py-4"}`}
       >
         <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
-          {/* Logo */}
-          <Link href="/" className="group select-none">
+          {/* Logo - on home scrolls to hero top, elsewhere navigates to home */}
+          <Link href="/" className="group select-none" onClick={handleLogoClick}>
             <motion.span
               initial="initial"
               animate="visible"

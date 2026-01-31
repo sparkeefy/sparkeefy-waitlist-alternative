@@ -208,10 +208,10 @@ const AboutHero = () => {
                 className="w-full absolute inset-0 flex flex-col justify-center"
               >
                 <div>
-                  <h1 className="text-5xl font-bold mb-3 leading-[1.15] text-white">
+                  <h1 className="text-5xl font-bold mb-3 leading-[1.15] bg-[linear-gradient(90deg,_#FFFFFF_0%,_#FFD9EC_30%,_#FFFFFF_50%,_#FFE8F4_80%,_#FFFFFF_100%)] bg-clip-text text-transparent [filter:drop-shadow(0_2px_10px_rgba(0,0,0,0.6))]">
                     {content[activeTab].headline}
                   </h1>
-                  <p className="text-xl lg:text-2xl text-white/70 mb-5 font-normal leading-relaxed">
+                  <p className="text-xl lg:text-2xl bg-[linear-gradient(90deg,_#F0E0EB_0%,_#FFE0F0_50%,_#FFE8F4_100%)] bg-clip-text text-transparent [filter:drop-shadow(0_1px_4px_rgba(0,0,0,0.5))] mb-5 font-normal leading-relaxed">
                     {content[activeTab].subheadline}
                   </p>
 

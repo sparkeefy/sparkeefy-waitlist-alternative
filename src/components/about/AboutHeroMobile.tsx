@@ -214,11 +214,10 @@ export const AboutHeroMobile = () => {
                 className="w-full absolute top-0"
               >
                 <div className="pr-4">
-                  <h1 className="text-4xl font-bold mb-4 leading-tight text-white drop-shadow-lg">
-                  
-                 {content[activeTab].headline}
+                  <h1 className="text-4xl font-bold mb-4 leading-tight bg-[linear-gradient(90deg,_#FFFFFF_0%,_#FFD9EC_30%,_#FFFFFF_50%,_#FFE8F4_80%,_#FFFFFF_100%)] bg-clip-text text-transparent [filter:drop-shadow(0_2px_10px_rgba(0,0,0,0.6))]">
+                    {content[activeTab].headline}
                   </h1>
-                  <p className="text-lg text-white/80 mb-6 font-medium leading-relaxed max-w-lg">
+                  <p className="text-lg bg-[linear-gradient(90deg,_#F0E0EB_0%,_#FFE0F0_50%,_#FFE8F4_100%)] bg-clip-text text-transparent [filter:drop-shadow(0_1px_4px_rgba(0,0,0,0.5))] mb-6 font-medium leading-relaxed max-w-lg">
                     {content[activeTab].subheadline}
                   </p>
 
