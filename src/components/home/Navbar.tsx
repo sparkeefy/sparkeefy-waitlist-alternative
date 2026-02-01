@@ -77,7 +77,16 @@ const Navbar = () => {
       >
         <div className="flex items-center justify-between w-full max-w-7xl mx-auto">
           {/* Logo */}
-          <Link href="/" className="group select-none">
+          <Link 
+            href="/" 
+            className="group select-none"
+            onClick={(e) => {
+              if (pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }}
+          >
             <motion.span
               initial="initial"
               animate="visible"

@@ -153,7 +153,7 @@ export const FeatureTabs = () => {
         </div>
 
         {/* Cards Stack Container */}
-        <div className="px-4 md:px-0">
+        <div className="px-12">
           <div className="max-w-7xl mx-auto relative h-[27.375rem] md:h-[29rem]">
             {featureCards.map((card, index) => (
               <FeatureCard
