@@ -18,7 +18,6 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-
 const Navbar = () => {
   const { scrollY } = useScroll();
   const y = useMotionValue(0);
@@ -65,11 +64,10 @@ const Navbar = () => {
           fixed top-0 left-0 right-0 z-50 
           w-full
           transition-colors duration-300
-          ${
-            isScrolled
-              ? "bg-black/40 backdrop-blur-md shadow-lg"
-              : "bg-transparent"
-          }
+          ${isScrolled
+          ? "bg-black/40 backdrop-blur-md shadow-lg"
+          : "bg-transparent"
+        }
         `}
     >
       <nav
@@ -162,14 +160,16 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button
-              size="sm"
-              className={`rounded-full bg-[#FF4AA5] hover:bg-pink-500 font-semibold text-sm px-4 py-1 shadow-lg shadow-pink-500/25 transition-all hover:shadow-pink-500/40 select-none
-                ${!isScrolled ? "text-black" : "text-white"}
-              `}
-            >
-              Get Early Access
-            </Button>
+            <Link href="/join">
+              <Button
+                size="sm"
+                className={`rounded-full bg-[#FF4AA5] hover:bg-pink-500 font-semibold text-sm px-4 py-1 shadow-lg shadow-pink-500/25 transition-all hover:shadow-pink-500/40 select-none
+                  ${!isScrolled ? "text-black" : "text-white"}
+                `}
+              >
+                Get Early Access
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu */}
@@ -264,12 +264,14 @@ const Navbar = () => {
                           ease: "linear",
                         }}
                       />
-                      <Button
-                        size="lg"
-                        className="relative w-full rounded-full bg-[linear-gradient(90deg,_rgba(60,_11,_36,_0.90)_0%,_rgba(0,_0,_0,_0.90)_100%)] backdrop-blur-lg text-base text-white font-medium"
-                      >
-                        Get Early Access
-                      </Button>
+                      <Link href="/join" className="relative w-full">
+                        <Button
+                          size="lg"
+                          className="relative w-full rounded-full bg-[linear-gradient(90deg,_rgba(60,_11,_36,_0.90)_0%,_rgba(0,_0,_0,_0.90)_100%)] backdrop-blur-lg text-base text-white font-medium"
+                        >
+                          Get Early Access
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -278,6 +280,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
+
     </motion.header>
   );
 };

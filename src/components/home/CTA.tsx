@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const CTA = () => {
   return (
@@ -42,39 +43,42 @@ const CTA = () => {
 
           {/* Right Side - Button */}
           <div className="relative z-10 flex-shrink-0 mb-2 md:mb-0">
-            <motion.button
-              initial="initial"
-              whileHover="hover"
-              whileTap="tap"
-              variants={{
-                initial: { scale: 1 },
-                hover: { scale: 1.05 },
-                tap: { scale: 0.95 }
-              }}
-              className="bg-white text-black text-lg font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors flex items-center gap-2"
-            >
-              Get Early Access
-              <motion.svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+            <Link href="/join">
+              <motion.button
+                initial="initial"
+                whileHover="hover"
+                whileTap="tap"
                 variants={{
-                  initial: { x: 0 },
-                  hover: { x: 5 }
+                  initial: { scale: 1 },
+                  hover: { scale: 1.05 },
+                  tap: { scale: 0.95 }
                 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="bg-white text-black text-lg font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors flex items-center gap-2"
               >
-                <path d="M13 17l5-5-5-5M6 17l5-5-5-5" />
-              </motion.svg>
-            </motion.button>
+                Get Early Access
+                <motion.svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  variants={{
+                    initial: { x: 0 },
+                    hover: { x: 5 }
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <path d="M13 17l5-5-5-5M6 17l5-5-5-5" />
+                </motion.svg>
+              </motion.button>
+            </Link>
           </div>
         </div>
       </div>
+
     </section>
   );
 };

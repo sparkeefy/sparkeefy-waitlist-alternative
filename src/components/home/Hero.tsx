@@ -5,10 +5,11 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import StarsBackground from "./StarsBackground";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const Hero = () => {
   const [isMobile, setIsMobile] = useState(false);
-  
+
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
@@ -20,8 +21,8 @@ const Hero = () => {
   const yText = useTransform(scrollY, [0, 300], [0, -150]);
   // Less aggressive opacity fade on mobile, original on desktop
   const opacityText = useTransform(
-    scrollY, 
-    [0, 150, 300], 
+    scrollY,
+    [0, 150, 300],
     isMobile ? [1, 0.90, 0.85] : [1, 0.8, 0.6]
   );
 
@@ -50,7 +51,7 @@ const Hero = () => {
         <StarsBackground />
 
         {/* Content */}
-        <motion.div 
+        <motion.div
           className="relative z-10 flex flex-col items-center text-center max-w-4xl px-4 lg:px-8 lg:mt-10 select-none"
           style={{ y: yText, opacity: opacityText }}
         >
@@ -122,16 +123,19 @@ const Hero = () => {
                 }}
               />
               {/* Button */}
-              <Button
-                size="lg"
-                className="relative z-20 rounded-full px-6 md:min-w-48 w-full py-5 md:py-6 text-sm md:text-base font-medium bg-[linear-gradient(90deg,_rgba(60,_11,_36,_0.90)_0%,_rgba(0,_0,_0,_0.90)_100%)] backdrop-filter backdrop-blur-[19.299999237060547px] text-white transition-all duration-300 border-0"
-              >
-                Get Early Access
-              </Button>
+              <Link href="/join" className="relative z-20 w-full">
+                <Button
+                  size="lg"
+                  className="relative z-20 rounded-full px-6 md:min-w-48 w-full py-5 md:py-6 text-sm md:text-base font-medium bg-[linear-gradient(90deg,_rgba(60,_11,_36,_0.90)_0%,_rgba(0,_0,_0,_0.90)_100%)] backdrop-filter backdrop-blur-[19.299999237060547px] text-white transition-all duration-300 border-0"
+                >
+                  Get Early Access
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </motion.div>
       </div>
+
     </>
   );
 };
