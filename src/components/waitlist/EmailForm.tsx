@@ -30,7 +30,7 @@ export default function EmailForm({ onSubmit }: EmailFormProps) {
         />
         <button
           type="submit"
-          className="shrink-0 bg-white text-black w-[86px] h-[41px] rounded-full text-lg font-bold tracking-[-0.36px] mr-[6px] hover:bg-white/90 transition-colors"
+          className="shrink-0 bg-white text-black w-[86px] h-[41px] rounded-full text-lg font-bold tracking-[-0.36px] mr-[6px] hover:bg-gray-200 active:scale-95 transition-all duration-150"
         >
           {waitlistContent.form.submitButton}
         </button>

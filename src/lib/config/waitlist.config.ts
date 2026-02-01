@@ -78,7 +78,7 @@ export const successContent = {
     text: "We'll reach out when ",
     brandRetro: "Sparkee",
     brandBold: "fy",
-    suffix: " is ready—",
+    suffix: " is ready",
     boldText: "no spam, no unnecessary notifications.",
   },
 } as const;

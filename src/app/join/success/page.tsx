@@ -49,10 +49,10 @@ export default function SuccessPage() {
         </p>
       </div>
 
-      {/* Main content — centered in card, Figma: 606×347 content area */}
+      {/* Main content — centered in card */}
       <div
         className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center not-italic"
-        style={{ top: "calc(50% - 45px)", width: 606, height: 347 }}
+        style={{ top: "calc(50% + 20px)", width: 606, height: 450 }}
       >
         {/* Congratulations — Figma: 80px Retro Vintage, top -26px */}
         <p

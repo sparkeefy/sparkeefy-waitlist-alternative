@@ -64,10 +64,10 @@ export default function JoinPage() {
         style={{ left: 388, top: 149, width: 605 }}
       >
         {/* Heading group */}
-        <div className="flex flex-col gap-[40px] items-center w-full">
+        <div className="flex flex-col gap-[26px] items-center w-full">
           {/* Heading */}
           <div className="relative w-full">
-            <p className="font-bold text-white text-[68px] tracking-[-1.36px] text-center leading-normal w-full whitespace-pre-wrap">
+            <p className="font-bold text-white text-[68px] tracking-[-1.36px] text-center leading-[1.15] w-full whitespace-pre-wrap">
               <span>{waitlistContent.heading.prefix}</span>
               <span className="font-retro font-normal tracking-normal text-[#ffcce5]">
                 {waitlistContent.heading.highlight}

@@ -74,7 +74,7 @@ export default function WaitlistLayout({
             <span className="sr-only">Close</span>
           </button>
 
-          <div className="flex flex-col items-center text-center px-5 pt-8 pb-12">
+          <div className="flex flex-col items-center text-center px-6 pt-8 pb-12">
             {mobileChildren}
           </div>
         </div>
