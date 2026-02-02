@@ -11,7 +11,6 @@ import {
   FaLinkedinIn,
   FaXTwitter,
 } from "react-icons/fa6";
-import { useMediaQuery } from "react-responsive";
 
 const CustomSignalIcon = ({ className }: { className?: string }) => (
   <svg
@@ -82,16 +81,6 @@ const Footer = () => {
     visible: { opacity: 1, y: 0 },
   };
 
-  // Robust Media Query via react-responsive (Handles scaling/zoom better)
-  const [mounted, setMounted] = React.useState(false);
-  const isTallScreenQuery = useMediaQuery({ minHeight: 800 });
-  
-  // Use default value on server, actual value after mount to prevent hydration mismatch
-  const isTallScreen = mounted ? isTallScreenQuery : false;
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <footer className="relative w-full bg-[#010302] pt-4 md:pt-10 pb-0 overflow-hidden">
@@ -102,14 +91,14 @@ const Footer = () => {
         variants={containerVariants}
         className="max-w-[69rem] px-4 md:px-0 mx-auto relative z-10"
       >
-        <div className="flex flex-col lg:flex-row justify-between gap-1 lg:gap-24">
-          {/* Left Side: Brand & Socials */}
+        <div className="flex flex-col lg:flex-row justify-between gap-8 lg:gap-24">
+          {/* Left: Logo, tagline, socials, app badges - centered on mobile */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col gap-5 md:gap-4 max-w-md"
+            className="flex flex-col gap-5 md:gap-4 max-w-md max-lg:mx-auto max-lg:items-center max-lg:text-center"
           >
-            <div className="flex flex-col max-md:items-center gap-2 md:gap-3 select-none">
-              <Link href="/" className="group">
+            <div className="flex flex-col gap-2 md:gap-3 select-none">
+              <Link href="/" className="group inline-flex max-lg:justify-center">
                 <motion.span
                   initial="initial"
                   whileInView="visible"
@@ -162,9 +151,7 @@ const Footer = () => {
                 Helps you keep the spark alive.
               </p>
             </div>
-
-            {/* Social Icons */}
-            <div className="flex flex-wrap max-md:justify-center gap-2 max-md:hidden">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-2">
               {socialDatabase.map((item, index) => (
                 <Link
                   key={index}
@@ -181,16 +168,14 @@ const Footer = () => {
                 </Link>
               ))}
             </div>
-
-            {/* App Store Buttons */}
-            <div className="flex flex-wrap gap-3 mt-2 max-md:justify-center max-md:hidden">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3">
               <Link
                 href="#"
                 className="hover:scale-105 transition-all duration-300"
               >
                 <Image
                   src="/img/app-store.png"
-                  alt="Download on the App Store"
+                  alt="Soon Available On App Store"
                   width={145}
                   height={45}
                 />
@@ -201,7 +186,7 @@ const Footer = () => {
               >
                 <Image
                   src="/img/google-play.png"
-                  alt="Get it on Google Play"
+                  alt="Soon Available On Google Play"
                   width={145}
                   height={45}
                 />
@@ -209,96 +194,48 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Right Side: Navigation */}
+          {/* Right: Nav (two columns) + CTA - centered on mobile */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col text-xl md:text-base md:flex-row flex-wrap gap-6 md:gap-12 text-white max-md:items-center mb-4 md:mb-0"
+            className="flex flex-row flex-wrap items-start justify-center lg:justify-end gap-8 md:gap-12 text-white"
           >
-            <div className="flex flex-col max-md:items-center gap-3">
+            <div className="flex flex-col gap-3 text-center lg:text-left">
               <Link
-                href="#"
-                className="font-semibold md:font-bold hover:text-pink-300 text-white max-md:mb-2"
+                href="/"
+                className="font-semibold md:font-bold hover:text-pink-300 text-white"
               >
                 Home
               </Link>
-              <Link href="#" className="hover:text-pink-300 text-gray-200">
+              <Link href="/#features" className="hover:text-pink-300 text-gray-200">
                 Features
               </Link>
-              <Link href="#" className="hover:text-pink-300 text-gray-200">
+              <Link href="/#who-is-sparkeefy-for" className="hover:text-pink-300 text-gray-200">
                 Who is Sparkeefy for
               </Link>
-              <Link href="#" className="hover:text-pink-300 text-gray-200">
+              <Link href="/#faqs" className="hover:text-pink-300 text-gray-200">
                 FAQs
               </Link>
             </div>
-            <div className="flex flex-col gap-3">
-              {/* <Link href="#" className="font-semibold md:font-bold">
-                Privacy
-              </Link> */}
+            <div className="flex flex-col gap-3 text-center lg:text-left">
               <Link
-                href="#"
+                href="/privacy"
+                className="font-semibold md:font-bold hover:text-pink-300 text-white"
+              >
+                Privacy
+              </Link>
+              <Link
+                href="/about"
                 className="font-semibold md:font-bold hover:text-pink-300 text-white"
               >
                 About
               </Link>
             </div>
-            <div className="flex flex-col gap-4 lg:ms-8">
+            <div className="w-full lg:w-auto flex justify-center lg:justify-end">
               <Link
-                href="#"
-                className="text-[#FF0080] font-semibold md:font-bold hover:text-pink-400"
+                href="/#cta"
+                className="inline-flex items-center justify-center rounded-full px-6 py-3 text-base font-bold text-white bg-gradient-to-r from-[#FF0080] via-[#FF52A9] to-[#FF0080] border-2 border-white/20 hover:border-white/40 transition-all hover:opacity-90"
               >
-                Join Waitlist
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* For Mobile */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col gap-5 md:gap-4 max-w-md md:hidden"
-          >
-            {/* Social Icons */}
-            <div className="flex flex-wrap max-md:justify-center gap-2">
-              {socialDatabase.map((item, index) => (
-                <Link
-                  key={index}
-                  href={item.link}
-                  className={`w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white transition-all duration-300 group ${
-                    item.hoverColor || "hover:bg-white/30"
-                  }`}
-                >
-                  <item.Icon
-                    className={`${
-                      item.iconClass || "w-5 h-5"
-                    } group-hover:scale-110 transition-all duration-300`}
-                  />
-                </Link>
-              ))}
-            </div>
-
-            {/* App Store Buttons */}
-            <div className="flex flex-wrap gap-3 mt-2 max-md:justify-center">
-              <Link
-                href="#"
-                className="hover:scale-105 transition-all duration-300"
-              >
-                <Image
-                  src="/img/app-store.png"
-                  alt="Download on the App Store"
-                  width={145}
-                  height={45}
-                />
-              </Link>
-              <Link
-                href="#"
-                className="hover:scale-105 transition-all duration-300"
-              >
-                <Image
-                  src="/img/google-play.png"
-                  alt="Get it on Google Play"
-                  width={145}
-                  height={45}
-                />
+                Get Early Access
               </Link>
             </div>
           </motion.div>
@@ -306,11 +243,7 @@ const Footer = () => {
       </motion.div>
 
       {/* Large Text & Gradient Background */}
-      <div
-        className={`relative w-full flex justify-center items-end pointer-events-none 
-        ${isTallScreen ? "h-[32rem] -mt-64" : "h-[18rem] md:h-[24rem] -mt-52 md:-mt-40"}
-      `}
-      >
+      <div className="relative w-full flex justify-center items-end pointer-events-none h-[8rem] md:h-[24rem] tall:h-[32rem] -mt-24 md:-mt-40 tall:-mt-64">
         {/* Gradient Image */}
         <div className="absolute bottom-0 left-0 w-full h-full z-0 opacity-100 mix-blend-normal">
           <Image
@@ -318,8 +251,7 @@ const Footer = () => {
             alt="Gradient Background"
             fill
             priority
-            className="hidden md:block object-cover"
-            style={{ objectPosition: isTallScreen ? "top" : "bottom" }}
+            className="hidden md:block object-cover object-bottom tall:object-top"
           />
           <Image
             src="/img/footer-gradient-bg-mobile.png"
@@ -331,7 +263,7 @@ const Footer = () => {
         </div>
 
         {/* Text */}
-        <h1 className="relative max-md:mb-4 z-10 text-[3.25rem] md:text-[11rem] font-deli text-[rgba(255,255,255,0.12)] md:tracking-tight leading-none select-none">
+        <h1 className="relative max-md:mb-0 z-10 text-[3.25rem] md:text-[11rem] font-deli text-[rgba(255,255,255,0.12)] md:tracking-tight leading-none select-none">
           #SPARKITUP
         </h1>
       </div>

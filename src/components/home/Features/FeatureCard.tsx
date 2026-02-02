@@ -1,7 +1,6 @@
 import React from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { featureCards } from "./data";
-import { useMediaQuery } from "react-responsive";
 
 export interface FeatureCardProps {
   card: typeof featureCards[0];
@@ -13,12 +12,11 @@ export interface FeatureCardProps {
 }
 
 export const FeatureCard = ({ card, index, activeIndex = 0, scrollYProgress, totalCards, variant = "default" }: FeatureCardProps) => {
-  const isMobile = useMediaQuery({ maxWidth: 768 });
   // Config
   const step = 0.25;
   const holdDuration = 0.15;
   const isLast = index === totalCards - 1;
-  const baseTilt = isMobile ? 4 : 5; // Uniform Clockwise Tilt
+  const baseTilt = 5; // Uniform Clockwise Tilt (use same value for consistency)
 
   // Timeline Points
   // enterStart: When prev card finishes holding (starts exiting)

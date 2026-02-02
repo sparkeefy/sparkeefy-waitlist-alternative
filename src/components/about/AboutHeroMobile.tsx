@@ -4,11 +4,12 @@ import Image from "next/image";
 import StarsBackground from "@/components/home/StarsBackground";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Same tab→background mapping as desktop: pic 1 = Remember effortlessly, pic 2 = Know what to say, etc.
 const bgImages = [
-  "/img/about-hero-bg-mobile-1.png",
-  "/img/about-hero-bg-2.png", 
-  "/img/about-hero-bg-3.png", 
-  "/img/about-hero-bg-4.png", 
+  "/img/hero-bg-mobile-2.png",           // 0: Remember what matters, effortlessly
+  "/img/about-hero-bg-mobile-1.png",     // 1: Know what to say, when it matters
+  "/img/about-hero-bg-3.png",            // 2: Dates that don't feel generic
+  "/img/about-hero-bg-4.png",            // 3: Give gifts that feel personal
 ];
 
 const tabs = [
@@ -171,7 +172,7 @@ export const AboutHeroMobile = () => {
 
       <StarsBackground />
 
-      <div className="absolute top-24 left-4 right-4 z-[60] flex gap-2">
+      <div className="absolute top-24 left-4 right-4 z-10 flex gap-2">
         {content.map((_, index) => (
           <div key={index} className={`flex-1 h-1 my-auto bg-white/20 rounded-full overflow-hidden ${index === activeTab ? "bg-white h-1.5" : ""}`}>
             <motion.div 
@@ -186,7 +187,7 @@ export const AboutHeroMobile = () => {
         ))}
       </div>
 
-      <div className="absolute inset-0 z-50 flex">
+      <div className="absolute inset-0 z-10 flex pt-32">
         <div className="w-1/3 h-full" onClick={prevTab} />
         <div className="w-2/3 h-full" onClick={nextTab} />
       </div>

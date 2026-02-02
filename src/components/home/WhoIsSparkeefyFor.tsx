@@ -244,23 +244,24 @@ const WhoIsSparkeefyFor = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-4 max-w-[69rem] mx-auto md:text-left text-center">
+        <div className="grid grid-cols-2 gap-3 md:gap-6 max-w-[54rem] mx-auto md:text-left text-center">
           {/* Couples Card */}
           <motion.div 
             whileHover={{ y: -10, backgroundColor: "#222", boxShadow: "0 15px 40px -5px rgba(255, 255, 255, 0.15)" }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="bg-[#1A1919] rounded-3xl px-6 py-8"
+            className="bg-[#1A1919] rounded-3xl px-3 md:px-6 py-6 md:py-8"
           >
-            <div className="mb-3 flex justify-center md:justify-start">
+            <div className="mb-2 md:mb-3 flex justify-center md:justify-start">
              <Image
                 src="/img/couples.png"
                 alt="Couples"
-                width={100}
-                height={100}
+                width={80}
+                height={80}
+                className="md:w-[100px] md:h-[100px]"
               />
             </div>
-            <h3 className="text-[1.625rem] font-bold text-white mb-2">Couples</h3>
-            <p className="text-lg text-[#D1D1D1] leading-snug font-normal -tracking-[0.01em]">
+            <h3 className="text-lg md:text-[1.625rem] font-bold text-white mb-1 md:mb-2">Couples</h3>
+            <p className="text-sm md:text-lg text-[#D1D1D1] leading-snug font-normal -tracking-[0.01em]">
               For partners who want to stay thoughtful, connected, and
               intentional -{" "}
               <span className="font-bold">
@@ -273,18 +274,19 @@ const WhoIsSparkeefyFor = () => {
           <motion.div 
             whileHover={{ y: -10, backgroundColor: "#222", boxShadow: "0 15px 40px -5px rgba(255, 255, 255, 0.15)" }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="bg-[#1A1919] rounded-3xl px-6 py-8"
+            className="bg-[#1A1919] rounded-3xl px-3 md:px-6 py-6 md:py-8"
           >
-            <div className="mb-3 flex justify-center md:justify-start">
+            <div className="mb-2 md:mb-3 flex justify-center md:justify-start">
               <Image
                 src="/img/friends.png"
                 alt="Friends"
-                width={100}
-                height={100}
+                width={80}
+                height={80}
+                className="md:w-[100px] md:h-[100px]"
               />
             </div>
-            <h3 className="text-[1.625rem] font-bold text-white mb-2">Friends</h3>
-            <p className="text-lg text-[#D1D1D1] leading-snug font-normal -tracking-[0.01em]">
+            <h3 className="text-lg md:text-[1.625rem] font-bold text-white mb-1 md:mb-2">Friends</h3>
+            <p className="text-sm md:text-lg text-[#D1D1D1] leading-snug font-normal -tracking-[0.01em]">
               For close friendships where remembering the little things and
               showing up still matters -{" "}
               <span className="font-bold">
@@ -297,20 +299,21 @@ const WhoIsSparkeefyFor = () => {
           <motion.div 
             whileHover={{ y: -10, backgroundColor: "#222", boxShadow: "0 15px 40px -5px rgba(255, 255, 255, 0.15)" }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="bg-[#1A1919] rounded-3xl px-6 py-8"
+            className="bg-[#1A1919] rounded-3xl px-3 md:px-6 py-6 md:py-8 col-span-2"
           >
-            <div className="mb-3 flex justify-center md:justify-start">
+            <div className="mb-2 md:mb-3 flex justify-center md:justify-start">
              <Image
                 src="/img/family-members.png"
                 alt="Family Members"
-                width={100}
-                height={100}
+                width={80}
+                height={80}
+                className="md:w-[100px] md:h-[100px]"
               />
             </div>
-            <h3 className="text-[1.625rem] font-bold text-white mb-2">
+            <h3 className="text-lg md:text-[1.625rem] font-bold text-white mb-1 md:mb-2">
               Family Members
             </h3>
-            <p className="text-lg text-[#D1D1D1] leading-snug font-normal -tracking-[0.01em]">
+            <p className="text-sm md:text-lg text-[#D1D1D1] leading-snug font-normal -tracking-[0.01em]">
               For family relationships where important moments and thoughtful
               gestures help you stay close -{" "}
               <span className="font-semibold">

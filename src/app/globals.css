@@ -31,8 +31,10 @@
 }
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant tall (@media (min-height: 800px));
 
 @theme inline {
+  --breakpoint-tall: 800px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sf-pro-display), system-ui, -apple-system, sans-serif;

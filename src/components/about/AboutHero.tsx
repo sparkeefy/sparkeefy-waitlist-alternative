@@ -4,11 +4,12 @@ import Image from "next/image";
 import StarsBackground from "@/components/home/StarsBackground";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Background per tab: pic 1 = Remember effortlessly, pic 2 = Know what to say, etc.
 const bgImages = [
-  "/img/about-hero-bg-1.png",
-  "/img/about-hero-bg-2.png", 
-  "/img/about-hero-bg-3.png", 
-  "/img/about-hero-bg-4.png", 
+  "/img/about-hero-bg-1.png", // 0: Remember what matters, effortlessly
+  "/img/about-hero-bg-2.png", // 1: Know what to say, when it matters
+  "/img/about-hero-bg-3.png", // 2: Dates that don't feel generic
+  "/img/about-hero-bg-4.png", // 3: Give gifts that feel personal
 ];
 
 const tabs = [
@@ -21,7 +22,7 @@ const tabs = [
         <strong>{" "}effortlessly</strong>
       </>
     ),
-    color: "#00C4CC", // Cyan
+    color: "#DE0371", // Cyan
   },
   {
     id: 1,
@@ -31,7 +32,7 @@ const tabs = [
         <br /> when it matters
       </>
     ),
-    color: "#DE0371", // Pink
+    color: "#00C4CC", // Pink
   },
   {
     id: 2,
@@ -158,32 +159,23 @@ const AboutHero = () => {
 
   return (
     <div className="w-full bg-[#010302] text-white relative h-screen flex flex-col justify-between overflow-hidden px-6 lg:px-12">
-      {/* Background Images with Crossfade */}
-      <div 
-        className="absolute top-[48%] -left-[29%] right-0 h-full -translate-y-1/2 z-0 pointer-events-none"
-        
-      >
+      {/* Background Images with Crossfade - CSS background so gradient (about-hero-bg-1 etc.) is visible */}
+      <div className="absolute inset-0 z-[1] pointer-events-none min-h-full">
         <AnimatePresence mode="popLayout">
-           <motion.div
-             key={activeTab}
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             exit={{ opacity: 0 }}
-             transition={{ duration: 1 }}
-             className="absolute inset-0 w-full h-full"
-           >
-             <Image
-               src={bgImages[activeTab]}
-               alt="Background"
-               fill
-               className="object-contain" 
-               priority
-             />
-           </motion.div>
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0 w-full h-full min-h-full bg-no-repeat"
+            style={{
+              backgroundImage: `url(${bgImages[activeTab]})`,
+              backgroundSize: "cover",
+              backgroundPosition: "left top",
+            }}
+          />
         </AnimatePresence>
-        
-        {/* Gradient Overlay for Readability */}
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/80" /> */}
       </div>
 
       {/* Stars Overlay */}

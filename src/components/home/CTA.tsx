@@ -5,21 +5,22 @@ import { motion } from "framer-motion";
 
 const CTA = () => {
   return (
-    <section className="w-full bg-[#010302] py-14 md:py-20 px-4 lg:px-8 -my-1">
+    <section className="w-full bg-[#010302] pt-8 md:pt-12 pb-14 md:pb-20 px-4 lg:px-8 -my-1">
       <div className="w-full max-w-[69rem] mx-auto">
-        <div className="relative bg-[#8217C3] rounded-xl py-6 md:py-9 px-7 md:px-12 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-2 md:gap-16">
-          {/* Left Side - Text */}
-          <div className="relative z-10 max-w-sm text-center md:text-start">
-            <h2 className="text-4xl font-bold text-white mb-2 leading-tight">
+        <div className="relative bg-[#8217C3] rounded-2xl md:rounded-xl py-6 md:py-9 px-6 md:px-12 overflow-hidden flex flex-col md:flex-row items-stretch md:items-center justify-between gap-6 md:gap-16">
+          {/* Text - top on mobile, left on desktop */}
+          <div className="relative z-10 max-w-sm text-start order-1">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 leading-tight">
               Start showing up better
             </h2>
-            <p className="text-white/80 text-base font-medium leading-normal">
+            <p className="text-white/80 text-sm md:text-base font-medium leading-normal">
               Remember the little things, say the right words, and turn
               intention into action - without trying harder.
             </p>
           </div>
 
-          <div className="lg:absolute lg:top-1/2 lg:left-3/5 lg:-translate-x-1/2 lg:-translate-y-1/2 [&_svg]:w-[80%] h-auto pointer-events-none z-0 max-md:[&_svg]:mx-auto">
+          {/* Heart/arrow graphic - hidden on mobile */}
+          <div className="hidden lg:block absolute lg:top-1/2 lg:left-3/5 lg:-translate-x-1/2 lg:-translate-y-1/2 [&_svg]:w-[80%] h-auto pointer-events-none z-0">
             <svg
               width="430"
               height="106"
@@ -40,8 +41,8 @@ const CTA = () => {
             </svg>
           </div>
 
-          {/* Right Side - Button */}
-          <div className="relative z-10 flex-shrink-0 mb-2 md:mb-0">
+          {/* Button - below text on mobile, right on desktop */}
+          <div className="relative z-10 flex-shrink-0 order-2 w-full md:w-auto">
             <motion.button
               initial="initial"
               whileHover="hover"
@@ -51,7 +52,7 @@ const CTA = () => {
                 hover: { scale: 1.05 },
                 tap: { scale: 0.95 }
               }}
-              className="bg-white text-black text-lg font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors flex items-center gap-2"
+              className="w-full md:w-auto bg-white text-black text-lg font-bold py-3 px-8 rounded-full hover:bg-gray-100 transition-colors flex items-center justify-center gap-2"
             >
               Get Early Access
               <motion.svg
