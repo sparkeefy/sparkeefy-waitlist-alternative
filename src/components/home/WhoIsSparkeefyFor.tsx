@@ -244,7 +244,7 @@ const WhoIsSparkeefyFor = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 md:gap-6 max-w-[54rem] mx-auto md:text-left text-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 max-w-[69rem] mx-auto md:text-left text-center">
           {/* Couples Card */}
           <motion.div 
             whileHover={{ y: -10, backgroundColor: "#222", boxShadow: "0 15px 40px -5px rgba(255, 255, 255, 0.15)" }}
@@ -299,7 +299,7 @@ const WhoIsSparkeefyFor = () => {
           <motion.div 
             whileHover={{ y: -10, backgroundColor: "#222", boxShadow: "0 15px 40px -5px rgba(255, 255, 255, 0.15)" }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="bg-[#1A1919] rounded-3xl px-3 md:px-6 py-6 md:py-8 col-span-2"
+            className="bg-[#1A1919] rounded-3xl px-3 md:px-6 py-6 md:py-8 col-span-2 md:col-span-1"
           >
             <div className="mb-2 md:mb-3 flex justify-center md:justify-start">
              <Image
