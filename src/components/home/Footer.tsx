@@ -102,7 +102,7 @@ const Footer = () => {
         variants={containerVariants}
         className="max-w-[69rem] px-4 md:px-0 mx-auto relative z-10"
       >
-        <div className="flex flex-col lg:flex-row justify-between gap-8 lg:gap-24">
+        <div className="flex flex-col lg:flex-row justify-between gap-1 lg:gap-24">
           {/* Left Side: Brand & Socials */}
           <motion.div
             variants={itemVariants}
@@ -308,7 +308,7 @@ const Footer = () => {
       {/* Large Text & Gradient Background */}
       <div
         className={`relative w-full flex justify-center items-end pointer-events-none 
-        ${isTallScreen ? "h-[38rem] -mt-60" : "h-[20.875rem] md:h-[28rem] -mt-48 md:-mt-34"}
+        ${isTallScreen ? "h-[32rem] -mt-64" : "h-[18rem] md:h-[24rem] -mt-52 md:-mt-40"}
       `}
       >
         {/* Gradient Image */}
