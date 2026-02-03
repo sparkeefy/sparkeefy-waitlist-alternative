@@ -59,7 +59,7 @@ const tabs = [
 const content = [
   {
     id: 0,
-    headline: "Remember what matters, effortlessly",
+    headline: "Remember what matters \neffortlessly",
     subheadline: "So the people you care about feel genuinely cared for.",
     list: [
       "Important dates, preferences, and moments saved in one private place",
@@ -70,34 +70,34 @@ const content = [
   },
   {
     id: 1,
-    headline: "Know what to say, when it matters",
-    subheadline: "Helping you find the right words.",
+    headline: "Know what to say \n when it matters",
+    subheadline: "So conversations feel natural - even when words don’t come easily.",
     list: [
-      "Suggestions for messages that sound like you.",
-      "Support for difficult conversations.",
-      "Never miss a chance to reach out.",
+      "Gentle support for messages and check-ins when you’re unsure how to respond. You stay in control - nothing is sent without you choosing it",
+      "Suggestions you can shape and send in your own words - especially in sensitive moments",
+      "Communicate clearly - without sounding scripted or forced",
     ],
     image: "/img/about-2.png",
   },
   {
     id: 2,
-    headline: "Dates that don't feel generic",
-    subheadline: "Plan moments that are truly special.",
+    headline: "Plan moments\nwithout the stress",
+    subheadline: "So spending time together feels intentional, not last-minute.",
     list: [
-      "Tailored date ideas based on shared interests.",
-      "Planning tools that take the stress out.",
-      "Memories that last a lifetime.",
+      "Ideas for spending time together shaped around what you both enjoy.",
+      "Suggestions that consider your mood, budget and their preferences.",
+      "Helps you narrow things down and decide faster.",
     ],
     image: "/img/about-3.png",
   },
   {
     id: 3,
-    headline: "Give gifts that feel personal",
-    subheadline: "Thoughtful gifting made simple.",
+    headline: "Give gifts \n that feel personal",
+    subheadline: "So gifting feels thoughtful - not stressful.",
     list: [
-      "Gift ideas inspired by past conversations.",
-      "Reminders for key gifting occasions.",
-      "Track what you've given to avoid repeats.",
+      "Suggestions shaped around your shared moments and upcoming occasions",
+      "Gift ideas that reflect their tastes, interests, and the little details",
+      "Helps you decide with confidence, without second-guessing",
     ],
     image: "/img/about-4.png",
   },
@@ -200,10 +200,10 @@ const AboutHero = () => {
                 className="w-full absolute inset-0 flex flex-col justify-center"
               >
                 <div>
-                  <h1 className="text-5xl font-bold mb-3 leading-[1.15] bg-[linear-gradient(90deg,_#FFFFFF_0%,_#FFD9EC_30%,_#FFFFFF_50%,_#FFE8F4_80%,_#FFFFFF_100%)] bg-clip-text text-transparent [filter:drop-shadow(0_2px_10px_rgba(0,0,0,0.6))]">
+                  <h1 className="text-5xl font-bold mb-3 leading-[1.15] whitespace-pre-line bg-[linear-gradient(90deg,_#FFFFFF_0%,_#FFD9EC_30%,_#FFFFFF_50%,_#FFE8F4_80%,_#FFFFFF_100%)] bg-clip-text text-transparent [filter:drop-shadow(0_2px_10px_rgba(0,0,0,0.6))]">
                     {content[activeTab].headline}
                   </h1>
-                  <p className="text-xl lg:text-2xl bg-[linear-gradient(90deg,_#F0E0EB_0%,_#FFE0F0_50%,_#FFE8F4_100%)] bg-clip-text text-transparent [filter:drop-shadow(0_1px_4px_rgba(0,0,0,0.5))] mb-5 font-normal leading-relaxed">
+                  <p className="text-2xl bg-[linear-gradient(90deg,_#F0E0EB_0%,_#FFE0F0_50%,_#FFE8F4_100%)] bg-clip-text text-transparent [filter:drop-shadow(0_1px_4px_rgba(0,0,0,0.5))] mb-5 font-normal leading-relaxed">
                     {content[activeTab].subheadline}
                   </p>
 
@@ -211,7 +211,7 @@ const AboutHero = () => {
                     {content[activeTab].list.map((item, i) => (
                       <li
                         key={i}
-                        className="flex gap-4 items-start text-lg text-white"
+                        className="flex gap-4 items-start text-xl text-white"
                       >
                         <span className="mt-1 flex-shrink-0 w-4 h-4 bg-white rounded-full flex items-center justify-center shadow-sm [&_svg]:size-3">
                           <svg
@@ -234,9 +234,17 @@ const AboutHero = () => {
                           className="leading-snug"
                           dangerouslySetInnerHTML={{
                             __html: item.replace(
-                              /(saved in one private place|only when they matter)/g,
-                              '<b class="text-white">$1</b>',
-                            ),
+                              /(Gentle support|saved in one private place|only when they matter|especially in sensitive moments|Communicate clearly|Ideas|Suggestions|Gift ideas|Helps you decide|You stay in control - nothing is sent without you choosing it)/g,
+                              (match) => {
+                                if (
+                                  match ===
+                                  "You stay in control - nothing is sent without you choosing it"
+                                ) {
+                                  return `<span class="text-[#FF68B4] font-semibold">${match}</span>`;
+                                }
+                                return `<b class="text-white">${match}</b>`;
+                              },
+                            ) as string,
                           }}
                         ></span>
                       </li>

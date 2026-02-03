@@ -23,11 +23,47 @@ const privacyPoints = [
     description:
       "Your personal entries, reminders, and relationship details aren't read or monitored for ads.",
   },
+  {
+    title:"Security built in",
+    description:
+      " We use industry-standard protections to keep your data safe, both in transit and at rest.",
+  },
+  {
+    title:"You’re always in control", 
+    description:" You can view, update, or delete your information whenever you choose.",
+  },
+  {
+    title:"No surprises",
+    description:" We don’t quietly change how your data is handled behind your back.",
+  },
 ];
 
 const PrivacyHero = () => {
+  const listRef = React.useRef<HTMLDivElement | null>(null);
+
+  // Capture scroll inside the privacy list first, then fall back to page scroll at edges
+  const handleWheel: React.WheelEventHandler<HTMLDivElement> = (event) => {
+    const container = listRef.current;
+    if (!container) return;
+
+    const { scrollTop, scrollHeight, clientHeight } = container;
+    const deltaY = event.deltaY;
+    const isAtTop = scrollTop <= 0;
+    const isAtBottom = scrollTop + clientHeight >= scrollHeight - 1;
+
+    // If we're not at the top/bottom, consume the wheel event and scroll the list only
+    if ((deltaY < 0 && !isAtTop) || (deltaY > 0 && !isAtBottom)) {
+      event.preventDefault();
+      container.scrollTop += deltaY;
+    }
+    // Otherwise, let the event bubble so the page can scroll
+  };
+
   return (
-    <div className="w-full bg-[#010302] text-white relative min-h-screen flex flex-col overflow-hidden px-6 lg:px-12">
+    <div
+      className="w-full bg-[#010302] text-white relative min-h-screen flex flex-col overflow-hidden px-6 lg:px-12"
+      onWheel={handleWheel}
+    >
       {/* Background - hero-bg-1 (magenta gradient) */}
       <div className="absolute inset-0 z-[1] pointer-events-none min-h-full">
         <div
@@ -64,44 +100,50 @@ const PrivacyHero = () => {
               Your Privacy, <br/>  Handled With Care
             </motion.h1>
 
-            <ul className="flex flex-col gap-5">
-              {privacyPoints.map((point, i) => (
-                <motion.li
-                  key={point.title}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    duration: 0.4,
-                    delay: 0.1 * (i + 1),
-                    ease: "easeOut",
-                  }}
-                  className="flex gap-4 items-start text-lg text-white"
-                >
-                  <span className="mt-1 flex-shrink-0 w-4 h-4 bg-white rounded-full flex items-center justify-center shadow-sm [&_svg]:size-3">
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M10 3L4.5 8.5L2 6"
-                        stroke="black"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                  <span className="leading-snug">
-                    <strong className="text-white">{point.title}</strong>
-                    {" — "}
-                    {point.description}
-                  </span>
-                </motion.li>
-              ))}
-            </ul>
+            {/* Scrollable list: show only first ~3 points at rest, reveal others on scroll */}
+            <div
+              ref={listRef}
+              className="w-full max-h-[13rem] sm:max-h-[14rem] overflow-y-auto pr-2 scrollbar-hide"
+            >
+              <ul className="flex flex-col gap-5">
+                {privacyPoints.map((point, i) => (
+                  <motion.li
+                    key={point.title}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      duration: 0.4,
+                      delay: 0.1 * (i + 1),
+                      ease: "easeOut",
+                    }}
+                    className="flex gap-4 items-start text-lg text-white"
+                  >
+                    <span className="mt-1 flex-shrink-0 w-4 h-4 bg-white rounded-full flex items-center justify-center shadow-sm [&_svg]:size-3">
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10 3L4.5 8.5L2 6"
+                          stroke="black"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </span>
+                    <span className="leading-snug">
+                      <strong className="text-white">{point.title}</strong>
+                      {" — "}
+                      {point.description}
+                    </span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           {/* Right: Padlock image */}

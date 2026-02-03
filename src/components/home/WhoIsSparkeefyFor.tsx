@@ -249,19 +249,19 @@ const WhoIsSparkeefyFor = () => {
           <motion.div 
             whileHover={{ y: -10, backgroundColor: "#222", boxShadow: "0 15px 40px -5px rgba(255, 255, 255, 0.15)" }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="bg-[#1A1919] rounded-3xl px-3 md:px-6 py-6 md:py-8"
+            className="bg-[#1A1919] rounded-3xl px-4 md:px-8 py-8 md:py-10"
           >
             <div className="mb-2 md:mb-3 flex justify-center md:justify-start">
              <Image
                 src="/img/couples.png"
                 alt="Couples"
-                width={80}
-                height={80}
-                className="md:w-[100px] md:h-[100px]"
+                width={96}
+                height={96}
+                className="md:w-[120px] md:h-[120px]"
               />
             </div>
-            <h3 className="text-lg md:text-[1.625rem] font-bold text-white mb-1 md:mb-2">Couples</h3>
-            <p className="text-sm md:text-lg text-[#D1D1D1] leading-snug font-normal -tracking-[0.01em]">
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-2 md:mb-3">Couples</h3>
+            <p className="text-sm md:text-xl text-[#D1D1D1] leading-snug font-normal -tracking-[0.01em]">
               For partners who want to stay thoughtful, connected, and
               intentional -{" "}
               <span className="font-bold">
@@ -274,7 +274,7 @@ const WhoIsSparkeefyFor = () => {
           <motion.div 
             whileHover={{ y: -10, backgroundColor: "#222", boxShadow: "0 15px 40px -5px rgba(255, 255, 255, 0.15)" }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="bg-[#1A1919] rounded-3xl px-3 md:px-6 py-6 md:py-8"
+            className="bg-[#1A1919] rounded-3xl px-3 md:px-5 py-5 md:py-6"
           >
             <div className="mb-2 md:mb-3 flex justify-center md:justify-start">
               <Image
@@ -285,8 +285,8 @@ const WhoIsSparkeefyFor = () => {
                 className="md:w-[100px] md:h-[100px]"
               />
             </div>
-            <h3 className="text-lg md:text-[1.625rem] font-bold text-white mb-1 md:mb-2">Friends</h3>
-            <p className="text-sm md:text-lg text-[#D1D1D1] leading-snug font-normal -tracking-[0.01em]">
+            <h3 className="text-base md:text-xl font-bold text-white mb-1 md:mb-2">Friends</h3>
+            <p className="text-sm md:text-base text-[#D1D1D1] leading-snug font-normal -tracking-[0.01em]">
               For close friendships where remembering the little things and
               showing up still matters -{" "}
               <span className="font-bold">
@@ -299,7 +299,7 @@ const WhoIsSparkeefyFor = () => {
           <motion.div 
             whileHover={{ y: -10, backgroundColor: "#222", boxShadow: "0 15px 40px -5px rgba(255, 255, 255, 0.15)" }}
             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="bg-[#1A1919] rounded-3xl px-3 md:px-6 py-6 md:py-8 col-span-2 md:col-span-1"
+            className="bg-[#1A1919] rounded-3xl px-3 md:px-5 py-5 md:py-6 col-span-2 md:col-span-1"
           >
             <div className="mb-2 md:mb-3 flex justify-center md:justify-start">
              <Image
@@ -310,10 +310,10 @@ const WhoIsSparkeefyFor = () => {
                 className="md:w-[100px] md:h-[100px]"
               />
             </div>
-            <h3 className="text-lg md:text-[1.625rem] font-bold text-white mb-1 md:mb-2">
+            <h3 className="text-base md:text-xl font-bold text-white mb-1 md:mb-2">
               Family Members
             </h3>
-            <p className="text-sm md:text-lg text-[#D1D1D1] leading-snug font-normal -tracking-[0.01em]">
+            <p className="text-sm md:text-base text-[#D1D1D1] leading-snug font-normal -tracking-[0.01em]">
               For family relationships where important moments and thoughtful
               gestures help you stay close -{" "}
               <span className="font-semibold">
